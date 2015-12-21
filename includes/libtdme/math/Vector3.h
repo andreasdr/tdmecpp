@@ -136,85 +136,85 @@ namespace TDMEMath {
 		 * Operators                                                         *
 		 *********************************************************************/
 
-        /**
-         * = operator
-         */
-        Vector3& operator=(const Vector3& v);
+		/**
+		 * = operator
+		 */
+		Vector3& operator=(const Vector3& v);
 
-        /**
-         * == operator
-         */
-        bool operator== (const Vector3& v) const;
+		/**
+		 * == operator
+		 */
+		bool operator== (const Vector3& v) const;
 
-        /**
-         * !=
-         */
-        bool operator!= (const Vector3& v) const;
+		/**
+		 * !=
+		 */
+		bool operator!= (const Vector3& v) const;
 
-        /**
-         * += operator
-         */
-        Vector3& operator+=(const Vector3& v);
+		/**
+		 * += operator
+		 */
+		Vector3& operator+=(const Vector3& v);
 
-        /**
-         * -= operator
-         */
-        Vector3& operator-=(const Vector3& v);
+		/**
+		 * -= operator
+		 */
+		Vector3& operator-=(const Vector3& v);
 
-        /**
-         * *= operator
-         */
-        Vector3& operator*=(float number);
+		/**
+		 * *= operator
+		 */
+		Vector3& operator*=(float number);
 
-        /**
-         * /= operator
-         */
-        Vector3& operator/=(float number);
+		/**
+		 * /= operator
+		 */
+		Vector3& operator/=(float number);
 
-        /**
-         * + operator
-         */
-        friend Vector3 operator+(const Vector3& a, const Vector3& b);
+		/**
+		 * + operator
+		 */
+		friend Vector3 operator+(const Vector3& a, const Vector3& b);
 
-        /**
-         * - operator
-         */
-        friend Vector3 operator-(const Vector3& a, const Vector3& b);
+		/**
+		 * - operator
+		 */
+		friend Vector3 operator-(const Vector3& a, const Vector3& b);
 
-        /**
-         * - operator
-         */
-        friend Vector3 operator-(const Vector3& v);
+		/**
+		 * - operator
+		 */
+		friend Vector3 operator-(const Vector3& v);
 
-        /**
-         * * operator
-         */
-        friend Vector3 operator*(const Vector3& a, const Vector3& b);
+		/**
+		 * * operator
+		 */
+		friend Vector3 operator*(const Vector3& a, const Vector3& b);
 
-        /**
-         * * operator
-         */
-        friend Vector3 operator*(const Vector3& a, float b);
+		/**
+		 * * operator
+		 */
+		friend Vector3 operator*(const Vector3& a, float b);
 
-        /**
-         * * operator
-         */
-        friend Vector3 operator*(float a, const Vector3& b);
+		/**
+		 * * operator
+		 */
+		friend Vector3 operator*(float a, const Vector3& b);
 
-        /**
-         * / operator
-         */
-        friend Vector3 operator/(const Vector3& a, float b);
+		/**
+		 * / operator
+		 */
+		friend Vector3 operator/(const Vector3& a, float b);
 
-        /**
-         * [index] operator
-         */
-        float& operator[] (int index);
+		/**
+		 * [index] operator
+		 */
+		float& operator[] (int index);
 
-        /**
-         * [index] operator
-         */
-        const float& operator[] (int index) const;
+		/**
+		 * [index] operator
+		 */
+		const float& operator[] (int index) const;
 	private:
 		float data[3];
 	};
@@ -337,110 +337,110 @@ namespace TDMEMath {
         return *this;
     }
 
-	inline bool Vector3::operator== (const Vector3& v) const {
-    	return
-    		(fabsf(data[0] - v.data[0]) <= MathTools::EPSILON &&
-    		fabsf(data[1] - v.data[1]) <= MathTools::EPSILON &&
-    		fabsf(data[2] - v.data[2]) <= MathTools::EPSILON);
+ 	inline bool Vector3::operator== (const Vector3& v) const {
+		return
+			(fabsf(data[0] - v.data[0]) <= MathTools::EPSILON &&
+			fabsf(data[1] - v.data[1]) <= MathTools::EPSILON &&
+			fabsf(data[2] - v.data[2]) <= MathTools::EPSILON);
     }
 
 	inline bool Vector3::operator!= (const Vector3& v) const {
-    	return
-    		(fabsf(data[0] - v.data[0]) <= MathTools::EPSILON &&
-    		fabsf(data[1] - v.data[1]) <= MathTools::EPSILON &&
-    		fabsf(data[2] - v.data[2]) <= MathTools::EPSILON) == false;
+		return
+			(fabsf(data[0] - v.data[0]) <= MathTools::EPSILON &&
+			fabsf(data[1] - v.data[1]) <= MathTools::EPSILON &&
+			fabsf(data[2] - v.data[2]) <= MathTools::EPSILON) == false;
     }
 
 	inline Vector3& Vector3::operator+=(const Vector3& v) {
-    	data[0]+= v.data[0];
-    	data[1]+= v.data[1];
-    	data[2]+= v.data[2];
-    	return *this;
+		data[0]+= v.data[0];
+		data[1]+= v.data[1];
+		data[2]+= v.data[2];
+		return *this;
     }
 
 	inline Vector3& Vector3::operator-=(const Vector3& v) {
-    	data[0]-= v.data[0];
-    	data[1]-= v.data[1];
-    	data[2]-= v.data[2];
-    	return *this;
+		data[0]-= v.data[0];
+		data[1]-= v.data[1];
+		data[2]-= v.data[2];
+		return *this;
     }
 
 	inline Vector3& Vector3::operator*=(float n) {
-    	data[0]*= n;
-    	data[1]*= n;
-    	data[2]*= n;
-    	return *this;
+		data[0]*= n;
+		data[1]*= n;
+		data[2]*= n;
+		return *this;
     }
 
 	inline Vector3& Vector3::operator/=(float n) {
-    	data[0]/= n;
-    	data[1]/= n;
-    	data[2]/= n;
-    	return *this;
+		data[0]/= n;
+		data[1]/= n;
+		data[2]/= n;
+		return *this;
     }
 
 	inline Vector3 operator+(const Vector3& a, const Vector3& b) {
-    	return Vector3(
-    		a.data[0] + b.data[0],
+		return Vector3(
+			a.data[0] + b.data[0],
 			a.data[1] + b.data[1],
 			a.data[2] + b.data[2]
-    	);
+		);
     }
 
 	inline Vector3 operator-(const Vector3& a, const Vector3& b) {
-    	return Vector3(
-    		a.data[0] - b.data[0],
+		return Vector3(
+			a.data[0] - b.data[0],
 			a.data[1] - b.data[1],
 			a.data[2] - b.data[2]
-    	);
+		);
     }
 
 	inline Vector3 operator-(const Vector3& v) {
-    	return Vector3(
-    		-v.data[0],
+		return Vector3(
+			-v.data[0],
 			-v.data[1],
 			-v.data[2]
-    	);
+		);
     }
 
 	inline Vector3 operator*(const Vector3& a, const Vector3& b) {
-    	return Vector3(
-    		a.data[0] * b.data[0],
+		return Vector3(
+			a.data[0] * b.data[0],
 			a.data[1] * b.data[1],
 			a.data[2] * b.data[2]
-    	);
+		);
     }
 
 	inline Vector3 operator*(const Vector3& a, float b) {
-    	return Vector3(
-    		a.data[0] * b,
+		return Vector3(
+			a.data[0] * b,
 			a.data[1] * b,
 			a.data[2] * b
-    	);
+		);
     }
 
 	inline Vector3 operator*(float a, const Vector3& b) {
-    	return Vector3(
-    		a * b.data[0],
+		return Vector3(
+			a * b.data[0],
 			a * b.data[1],
 			a * b.data[2]
-    	);
+		);
     }
 
 	inline Vector3 operator/(const Vector3& a, float b) {
-    	return Vector3(
-    		a.data[0] / b,
+		return Vector3(
+			a.data[0] / b,
 			a.data[1] / b,
 			a.data[2] / b
-    	);
+		);
     }
 
 	inline float& Vector3::operator[] (int index) {
-    	return data[index];
+		return data[index];
     }
 
 	inline const float& Vector3::operator[] (int index) const {
-    	return data[index];
+		return data[index];
     }
 
 
