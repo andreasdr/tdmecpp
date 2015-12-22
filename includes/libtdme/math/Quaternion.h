@@ -295,11 +295,11 @@ namespace TDMEMath {
 	}
 
 	Quaternion& Quaternion::operator=(const Quaternion& q) {
-    	data[0] = q.data[0];
-    	data[1] = q.data[1];
-    	data[2] = q.data[2];
-    	data[3] = q.data[3];
-        return *this;
+		data[0] = q.data[0];
+		data[1] = q.data[1];
+		data[2] = q.data[2];
+		data[3] = q.data[3];
+		return *this;
 	}
 
 	bool Quaternion::operator== (const Quaternion& q) const {
