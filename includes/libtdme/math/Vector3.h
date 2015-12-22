@@ -25,6 +25,9 @@ namespace TDMEMath {
  	 * @version $Id$
  	 */
 	class Vector3 {
+
+		friend class Quaternion;
+
 	public:
 		/*********************************************************************
 		 * Methods                                                           *
@@ -57,31 +60,32 @@ namespace TDMEMath {
 
 		/**
 		 * Clear vector
-		 * @param x
 		 */
 		void setToZero();
 
 		/**
 		 * Set up vector
 		 * @param x
+		 * @param y
+		 * @param z
 		 */
 		void set(const float x, const float y, const float z);
 
 		/**
 		 * Compute the cross product of vector v1 and v2
-		 * @param v1
-		 * @param v2
+		 * @param vector3 a
+		 * @param vector3 b
 		 * @return cross product vector of v1 and v2
 		 */
-		static Vector3 computeCrossProduct(const Vector3& v1, const Vector3& v2);
+		static Vector3 computeCrossProduct(const Vector3& a, const Vector3& b);
 
 		/**
 		 * Compute the dot product of vector v1 and v2
-		 * @param v1
-		 * @param v2
+		 * @param vector3 a
+		 * @param vector3 b
 		 * @return Vector3
 		 */
-		static float computeDotProduct(const Vector3& v1, const Vector3& v2);
+		static float computeDotProduct(const Vector3& a, const Vector3& b);
 
 		/**
 		 * Computes angle between a and b from 0..180
@@ -118,14 +122,13 @@ namespace TDMEMath {
 
 		/**
 		 * Normalize the vector
-		 * @return this vector
 		 */
 		void normalize();
 
 		/**
 		 * @return vector as array
 		 */
-		const float (&getArray() const)[3];
+		float (&getArray())[3];
 
 		/**
 		 * @return string representation
@@ -164,12 +167,12 @@ namespace TDMEMath {
 		/**
 		 * *= operator
 		 */
-		Vector3& operator*=(float number);
+		Vector3& operator*=(float n);
 
 		/**
 		 * /= operator
 		 */
-		Vector3& operator/=(float number);
+		Vector3& operator/=(float n);
 
 		/**
 		 * + operator
@@ -319,6 +322,10 @@ namespace TDMEMath {
 		data[0] /= length;
 		data[1] /= length;
 		data[2] /= length;
+	}
+
+	float (&Vector3::getArray())[3] {
+		return data;
 	}
 
 	string Vector3::toString() const {
