@@ -1,0 +1,58 @@
+/**
+ * @version $Id: a5817099da41ca9b6651ef724eeb90d29510f8e1 $
+ */
+
+#include <libtdme/threading/Barrier.h>
+
+using namespace std;
+using namespace TDMEThreading;
+
+Barrier::Barrier(const string& name, const unsigned int count) :
+	name(name), count(count), entered(0), exited(0), m("barrier_mutex"), c("barrier_condition") {
+	//
+}
+
+Barrier::~Barrier() {
+	// wait until all threads entered the barrier
+	m.lock();
+	while (entered < count) {
+		c.wait(m);
+	}
+	m.unlock();
+
+	// spin until all exited
+	while (exited < count) {
+		//
+	}
+}
+
+bool Barrier::wait() {
+	m.lock();
+
+	// one thread entered the barrier
+	entered++;
+
+	// did we reach barrier?
+	if (entered == count) {
+		// broadcast all threads waiting on condition
+		c.broadcast();
+		m.unlock();
+
+		// notify exited thread
+		__sync_add_and_fetch(&exited, 1);
+
+		// exit
+		return true;
+	} else {
+		// wait until barrier is reached
+		while (entered < count) {
+			c.wait(m);
+		}
+		m.unlock();
+
+		// notify exited thread
+		__sync_add_and_fetch(&exited, 1);
+
+		return false;
+	}
+}
